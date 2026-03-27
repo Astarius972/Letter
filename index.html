@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Romantic Bear</title>
+    <title>Romantic Bear Challenge</title>
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
@@ -17,10 +17,17 @@
     </div>
 
     <div class="bear_kiss">
-      <div>
-        <img src="./bear_kiss.gif" alt="Kissing bear" />
-        <p class="bear_text">aaaaaa</p>
+      <div class="container">
+        <img id="bearImage" src="./bear_kiss.gif" alt="Kissing bear" />
+        <p id="questionText" class="bear_text">Надад хайртай юу? 🧸</p>
+
+        <div class="buttons">
+          <button id="yesBtn" class="btn yes-btn">Тийм</button>
+          <button id="noBtn" class="btn no-btn">Үгүй</button>
+        </div>
       </div>
     </div>
+
+    <script src="script.js"></script>
   </body>
 </html>
