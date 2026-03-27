@@ -1,0 +1,123 @@
+body {
+  margin: 0;
+  background: linear-gradient(135deg, #ffd1dc, #ffe4e1, #fff5e1);
+  overflow: hidden;
+  height: 100vh;
+}
+
+.bear_text {
+  font-size: 35px;
+}
+
+/* 1. Sparkle-ийг хязгааргүй болгох (background-position ашиглав) */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(white 2px, transparent 3px),
+    radial-gradient(#fff8 3px, transparent 4px),
+    radial-gradient(#ffffffaa 1.5px, transparent 3px);
+  background-size:
+    150px 150px,
+    200px 200px,
+    100px 100px;
+  animation:
+    infiniteScroll 20s linear infinite,
+    sparkleGlow 2s ease-in-out infinite alternate;
+  opacity: 0.8;
+  z-index: 1;
+}
+
+@keyframes infiniteScroll {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 0 -600px;
+  } /* Дээшээ тасралтгүй урсана */
+}
+
+@keyframes sparkleGlow {
+  from {
+    filter: brightness(1);
+  }
+  to {
+    filter: brightness(1.6);
+  }
+}
+
+/* 2. Зүрхнүүдийн загвар болон анимаци */
+.hearts {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 2; /* Баавгайн ард, sparkle-ийн урд */
+}
+
+.heart {
+  position: absolute;
+  bottom: -50px; /* Дэлгэцийн доороос эхэлнэ */
+  font-size: 24px;
+  animation: floatUp 6s linear infinite;
+  opacity: 0;
+}
+
+/* Зүрх бүрийг өөр өөр байрлал, хугацаатай болгох */
+.heart:nth-child(1) {
+  left: 10%;
+  animation-delay: 0s;
+}
+.heart:nth-child(2) {
+  left: 30%;
+  animation-delay: 2s;
+  font-size: 30px;
+}
+.heart:nth-child(3) {
+  left: 50%;
+  animation-delay: 4s;
+}
+.heart:nth-child(4) {
+  left: 70%;
+  animation-delay: 1s;
+  font-size: 20px;
+}
+.heart:nth-child(5) {
+  left: 85%;
+  animation-delay: 3s;
+}
+.heart:nth-child(6) {
+  left: 20%;
+  animation-delay: 5s;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.8;
+  }
+  90% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-110vh) rotate(360deg); /* Дээшээ гараад эргэлдэнэ */
+    opacity: 0;
+  }
+}
+
+.bear_kiss {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 10; /* Баавгай хамгийн урд нь */
+}
