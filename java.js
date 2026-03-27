@@ -81,3 +81,37 @@ yesBtn.addEventListener("click", () => {
 envelope.addEventListener("click", () => {
   envelope.classList.toggle("open");
 });
+// ... (startMatrix болон бусад хувьсагчид хэвээрээ)
+
+// Захидал нээх үйлдэл - Нэгтгэсэн хувилбар
+envelope.addEventListener("click", (e) => {
+  e.stopPropagation(); // Matrix-д нөлөөлөхгүй байх
+
+  // Дугтуйг нээх/хаах класс солих
+  envelope.classList.toggle("open");
+});
+
+// "Тийм" дарах үед (Чиний өмнөх логик)
+yesBtn.addEventListener("click", () => {
+  mainContainer.style.display = "none"; // mainContainer-ийг нууна
+  startMatrix();
+
+  setTimeout(() => {
+    letterWrapper.classList.remove("hidden");
+    setTimeout(() => {
+      letterWrapper.classList.add("show");
+    }, 100);
+  }, 1000);
+});
+
+// "Үгүй" товчлуурын зугтах логик (Хэвээрээ)
+noBtn.addEventListener("mouseover", () => {
+  const maxX = window.innerWidth - noBtn.offsetWidth;
+  const maxY = window.innerHeight - noBtn.offsetHeight;
+  noBtn.style.position = "fixed";
+  noBtn.style.left = Math.random() * maxX + "px";
+  noBtn.style.top = Math.random() * maxY + "px";
+
+  yesScale += 0.3;
+  yesBtn.style.transform = `scale(${yesScale})`;
+});
