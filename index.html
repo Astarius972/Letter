@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Romantic Bear Challenge</title>
+    <title>Romantic Bear</title>
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
@@ -21,13 +21,40 @@
         <img id="bearImage" src="./bear_kiss.gif" alt="Kissing bear" />
         <p id="questionText" class="bear_text">Надад хайртай юу? 🧸</p>
 
-        <div class="buttons">
+        <div class="button-group">
+          <button id="yesBtn" class="btn yes-btn">Тийм</button>
+          <button id="noBtn" class="btn no-btn">Үгүй</button>
+        </div>
+      </div>
+    </div>
+    <div class="bear_kiss">
+      <div class="container" id="mainContainer">
+        <img id="bearImage" src="./bear_kiss.gif" alt="Kissing bear" />
+        <p id="questionText" class="bear_text">Надад хайртай юу? 🧸</p>
+
+        <div class="button-group" id="btnGroup">
           <button id="yesBtn" class="btn yes-btn">Тийм</button>
           <button id="noBtn" class="btn no-btn">Үгүй</button>
         </div>
       </div>
     </div>
 
-    <script src="script.js"></script>
+    <canvas id="matrixCanvas"></canvas>
+
+    <div id="letterWrapper" class="hidden">
+      <div class="envelope" id="envelope">
+        <div class="flap"></div>
+        <div class="body"></div>
+        <div class="letter">
+          <p>Миний хайртдаа...</p>
+          <p>
+            Чи миний амьдралын хамгийн нандин хүн шүү. Чамайгаа үргэлж хайрлаж
+            явах болно! ❤️
+          </p>
+        </div>
+        <div class="heart-seal">❤️</div>
+      </div>
+    </div>
+    <script src="./java.js"></script>
   </body>
 </html>
