@@ -1,3 +1,5 @@
+/* --- ЧИНИЙ ҮНДСЭН КОД ЭНД ҮРГЭЛЖИЛНЭ --- */
+
 body {
   margin: 0;
   background: linear-gradient(135deg, #ffd1dc, #ffe4e1, #fff5e1);
@@ -170,10 +172,10 @@ body::after {
   z-index: 50;
 }
 
-/* ЗАХИДЛЫН БАЙРЛАЛЫН ЗАСВАР */
+/* ЗАХИДЛЫН БАЙРЛАЛЫН ЗАСВАР - ДЭЛГЭЦИЙН ГОЛД */
 #letterWrapper {
   position: fixed;
-  top: 58%; /* Дугтуйг бага зэрэг доошлуулж, дээрээс тасрахгүй байх зай гаргав */
+  top: 50%; /* 58%-иас 50% болгож голлуулав */
   left: 50%;
   transform: translate(-50%, -50%) scale(0);
   z-index: 100;
@@ -243,19 +245,18 @@ body::after {
 }
 
 .envelope.open .letter {
-  /* translateY-ийг -130px болгож багасгав. Ингэснээр дээд ирмэг тасрахгүй. */
-  /* scale-ийг 1.9 болгож дэлгэцэнд бүрэн багтаав. */
-  transform: translateY(-130px) scale(1.9);
+  /* translateY-ийг 0 болгож дээшээ тасрахаас сэргийлэв */
+  transform: translateY(0) scale(1.6);
   opacity: 1;
   visibility: visible;
   z-index: 60;
-  height: 400px;
+  height: 420px; /* Өндөрийг бага зэрэг нэмэв */
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
   overflow-y: auto;
 }
 
 .letter p {
-  font-size: 11px;
+  font-size: 13px; /* Уншихад арай тод болгож 11-ээс 13 болгов */
   line-height: 1.6;
   margin: 10px 0;
   color: #333;
@@ -264,7 +265,6 @@ body::after {
   font-family: "Georgia", serif;
 }
 
-/* Scrollbar загвар */
 .letter::-webkit-scrollbar {
   width: 4px;
 }
@@ -275,4 +275,55 @@ body::after {
 
 .hidden {
   display: none !important;
+}
+
+/* --- ГАР УТАСАНД ЗОРИУЛСАН НЭМЭЛТ ЗАСВАР (RESPONSIVE) --- */
+
+@media screen and (max-width: 600px) {
+  .bear_text {
+    font-size: 26px;
+    padding: 0 15px;
+  }
+
+  #bearImage {
+    width: 70%;
+    height: auto;
+  }
+
+  .envelope {
+    width: 280px;
+    height: 180px;
+  }
+
+  .envelope .flap {
+    border-left: 140px solid transparent;
+    border-right: 140px solid transparent;
+    border-top: 100px solid #ff4d6d;
+  }
+
+  .envelope .body {
+    width: 280px;
+    height: 180px;
+    clip-path: polygon(0 0, 140px 100px, 280px 0, 280px 180px, 0 180px);
+  }
+
+  .letter {
+    width: 260px;
+    height: 160px;
+  }
+
+  .envelope.open .letter {
+    transform: translateY(0) scale(1.2); /* Утсан дээрх хэмжээг тааруулав */
+    height: 380px;
+    width: 260px;
+  }
+
+  .letter p {
+    font-size: 12px;
+  }
+
+  .button-group {
+    flex-direction: column;
+    gap: 15px;
+  }
 }
